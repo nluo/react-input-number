@@ -1,0 +1,27 @@
+{
+  "name": "react-input-number",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lodash.round": "^4.0.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.2"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nluo/react-input-number.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nluo/react-input-number/issues"
+  },
+  "homepage": "https://github.com/nluo/react-input-number#readme"
+}
