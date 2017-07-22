@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>React number input examples</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+  <style media="screen">
+    .code {
+      background: transparent;
+      font-family: Menlo, monospace;
+      font-size: 1.4rem !important;
+      white-space: pre-wrap;
+    }
+
+    fieldset {
+      margin: 30px 0 60px;
+    }
+
+    blockquote:after {
+      content: "";
+      clear: both;
+      display: block;
+      height: 0;
+    }
+
+    .demo .table>tbody>tr>th,
+    .demo .table>tbody>tr>td {
+      vertical-align: middle;
+    }
+
+    .unselectable {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <fieldset>
+      <legend class="text-success">Minimal Usage</legend>
+      <p>
+        This will behave exactly like <code>&lt;input type="number"&gt;</code>. It will create an empty numeric input that
+        starts changing from zero. The difference is that this works on any browser and does have the same appearance everywhere.
+      </p>
+      <blockquote>
+        <div class="code jsx">&lt;NumberSpinner/&gt;</div>
+        <div id="simple-example"> </div>
+      </blockquote>
+    </fieldset>
+
+  </div>
+  <script src="./dist/bundle.js"></script>
+</body>
+
+</html>
