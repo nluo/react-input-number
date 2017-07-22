@@ -1,6 +1,6 @@
 {
   "name": "react-input-number-spinner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "dist/InputNumberSpinner.js",
   "main": "index.js",
   "dependencies": {
@@ -30,5 +30,7 @@
     "url": "https://github.com/nluo/react-input-number-spinner/issues"
   },
   "homepage": "https://github.com/nluo/react-input-number-spinner#readme",
-  "files": ["dist"]
+  "files": [
+    "dist"
+  ]
 }
