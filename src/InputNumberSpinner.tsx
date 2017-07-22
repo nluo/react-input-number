@@ -1,14 +1,16 @@
 import * as React from 'react';
-const round = require('lodash-round');
 
 const defaultDivStyle = {
-  margin: '10px auto',
-  width: '100%'
+  marginTop: '10px',
+  width: '300px'
 };
 
 const defaultButtonStyle = {
   height: '30px',
-  width: '15%'
+  width: '15%',
+  border: 0,
+  backgroundColor: 'rgba(0,0,0,.075)',
+  fontSize: '20px'
 };
 
 const defaultLabelStyle = {
@@ -17,24 +19,31 @@ const defaultLabelStyle = {
   textAlign: 'left'
 };
 
+const defaultInputBoxStyle = {
+  width: '65%',
+  textAlign: 'center',
+  height: '30px'
+};
+
 function formatNumber(num: number, format: number) {
-  return round(num, format).toFixed(2);
+  return num.toFixed(format);
 }
 
 export interface InputProps {
   step: number;
-  min: number;
-  max: number;
-  format: number;
-  divisor: number;
-  label: string;
+  min?: number;
+  max?: number;
+  format?: number;
+  label?: string;
   componentStyle?: any;
   buttonClassName?: string;
   inputBoxClassName?: string;
   labelStyle?: string;
+  leftButtonStyle?: any;
+  rightButtonStyle?: any;
 }
 
-class InputNumberSpinner extends React.Component<InputProps, any> {
+class NumberSpinner extends React.Component<InputProps, any> {
   public static defaultProps: Partial<InputProps> = {
     min: -Infinity,
     max: Infinity,
@@ -42,7 +51,9 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
     componentStyle: {},
     inputBoxClassName: 'defaultInputNumberWidgetInputClass',
     buttonClassName: 'defaultInputNumberWidgetClass',
-    divisor: 1
+    leftButtonStyle: null,
+    rightButtonStyle: null,
+    label: null
   };
 
   public constructor(props: any) {
@@ -53,9 +64,7 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
   }
   public decrement() {
     const currentValue = Number(this.state.displayValue);
-    const result = Number(
-      (currentValue - this.props.step).toFixed(this.props.format)
-    );
+    const result = Number(currentValue - this.props.step);
 
     if (result >= this.props.min) {
       this.setState({
@@ -66,9 +75,7 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
 
   public increment() {
     const currentValue = Number(this.state.displayValue);
-    const result = Number(
-      (currentValue + this.props.step).toFixed(this.props.format)
-    );
+    const result = Number(currentValue + this.props.step);
     this.setState({
       displayValue: formatNumber(result, this.props.format)
     });
@@ -97,26 +104,24 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
       defaultDivStyle,
       this.props.componentStyle ? this.props.componentStyle : {}
     );
-    const buttonStyle = Object.assign({}, defaultButtonStyle);
+    const leftButtonStyle = Object.assign({}, defaultButtonStyle, this.props.leftButtonStyle);
+    const rightButtonStyle = Object.assign({}, defaultButtonStyle, this.props.rightButtonStyle);
 
     const innerDivStyle = {
       width: '100%',
       display: 'flex'
     };
 
-    const inputBoxStyle = {
-      width: '65%',
-      textAlign: 'center'
-    };
-
     return (
       <div style={outterDivStyle}>
-        <div style={defaultLabelStyle}>
-          {this.props.label}
-        </div>
+        {
+          this.props.label ? <div style={defaultLabelStyle}>
+            {this.props.label}
+            </div> : null
+        }
         <div style={innerDivStyle}>
           <button
-            style={buttonStyle}
+            style={leftButtonStyle}
             onClick={() => {
               this.decrement();
             }}
@@ -136,11 +141,11 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
             }}
             className={
               this.props.inputBoxClassName ? this.props.inputBoxClassName : ''
-            }
-            style={inputBoxStyle}
-          />
-          <button
-            style={buttonStyle}
+        }
+        style={defaultInputBoxStyle}
+      />
+      <button
+        style={rightButtonStyle}
             onClick={() => {
               this.increment();
             }}
@@ -153,4 +158,4 @@ class InputNumberSpinner extends React.Component<InputProps, any> {
     );
   }
 }
-export default InputNumberSpinner;
+export default NumberSpinner;

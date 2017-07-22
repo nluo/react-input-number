@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "lodash.round": "^4.0.4",
+    "@types/node": "^8.0.14",
+    "@types/react": "^15.0.38",
+    "@types/react-dom": "^15.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "typescript": "^2.4.2"
+    "awesome-typescript-loader": "^3.2.1",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.4.2",
+    "webpack": "^3.3.0"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc",
+    "build-example": "webpack --config ./examples/webpack.config.js"
   },
   "repository": {
     "type": "git",
