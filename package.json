@@ -1,7 +1,7 @@
 {
-  "name": "react-input-number",
+  "name": "react-input-number-spinner",
   "version": "1.0.0",
-  "description": "",
+  "description": "dist/InputNumberSpinner.js",
   "main": "index.js",
   "dependencies": {
     "@types/node": "^8.0.14",
@@ -22,12 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nluo/react-input-number.git"
+    "url": "git+https://github.com/nluo/react-input-number-spinner.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Nick Luo <nick.luo@outlook.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nluo/react-input-number/issues"
+    "url": "https://github.com/nluo/react-input-number-spinner/issues"
   },
-  "homepage": "https://github.com/nluo/react-input-number#readme"
+  "homepage": "https://github.com/nluo/react-input-number-spinner#readme",
+  "files": ["dist"]
 }
