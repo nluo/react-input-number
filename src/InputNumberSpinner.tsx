@@ -62,7 +62,8 @@ class NumberSpinner extends React.Component<InputProps, any> {
       displayValue: formatNumber(0, props.format)
     };
   }
-  public decrement() {
+  public decrement(event) {
+    event.preventDefault();
     const currentValue = Number(this.state.displayValue);
     const result = Number(currentValue - this.props.step);
 
@@ -73,7 +74,8 @@ class NumberSpinner extends React.Component<InputProps, any> {
     }
   }
 
-  public increment() {
+  public increment(event) {
+    event.preventDefault();
     const currentValue = Number(this.state.displayValue);
     const result = Number(currentValue + this.props.step);
     this.setState({
@@ -94,7 +96,10 @@ class NumberSpinner extends React.Component<InputProps, any> {
 
   public handleInputOnBlur(event: any) {
     this.setState({
-      displayValue: formatNumber(Number(this.state.displayValue), this.props.format)
+      displayValue: formatNumber(
+        Number(this.state.displayValue),
+        this.props.format
+      )
     });
   }
 
@@ -104,8 +109,16 @@ class NumberSpinner extends React.Component<InputProps, any> {
       defaultDivStyle,
       this.props.componentStyle ? this.props.componentStyle : {}
     );
-    const leftButtonStyle = Object.assign({}, defaultButtonStyle, this.props.leftButtonStyle);
-    const rightButtonStyle = Object.assign({}, defaultButtonStyle, this.props.rightButtonStyle);
+    const leftButtonStyle = Object.assign(
+      {},
+      defaultButtonStyle,
+      this.props.leftButtonStyle
+    );
+    const rightButtonStyle = Object.assign(
+      {},
+      defaultButtonStyle,
+      this.props.rightButtonStyle
+    );
 
     const innerDivStyle = {
       width: '100%',
@@ -114,19 +127,21 @@ class NumberSpinner extends React.Component<InputProps, any> {
 
     return (
       <div style={outterDivStyle}>
-        {
-          this.props.label ? <div style={defaultLabelStyle}>
-            {this.props.label}
-            </div> : null
-        }
+        {this.props.label
+          ? <div style={defaultLabelStyle}>
+              {this.props.label}
+            </div>
+          : null}
         <div style={innerDivStyle}>
           <button
             style={leftButtonStyle}
-            onClick={() => {
-              this.decrement();
+            onClick={event => {
+              this.decrement(event);
             }}
             disabled={this.state.displayValue <= this.props.min}
-            className={this.props.buttonClassName ? this.props.buttonClassName : ''}
+            className={
+              this.props.buttonClassName ? this.props.buttonClassName : ''
+            }
           >
             -
           </button>
@@ -141,15 +156,17 @@ class NumberSpinner extends React.Component<InputProps, any> {
             }}
             className={
               this.props.inputBoxClassName ? this.props.inputBoxClassName : ''
-        }
-        style={defaultInputBoxStyle}
-      />
-      <button
-        style={rightButtonStyle}
-            onClick={() => {
-              this.increment();
+            }
+            style={defaultInputBoxStyle}
+          />
+          <button
+            style={rightButtonStyle}
+            onClick={event => {
+              this.increment(event);
             }}
-            className={this.props.buttonClassName ? this.props.buttonClassName : ''}
+            className={
+              this.props.buttonClassName ? this.props.buttonClassName : ''
+            }
           >
             +
           </button>
